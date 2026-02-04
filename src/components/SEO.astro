@@ -1,0 +1,69 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalURL?: string;
+}
+
+const {
+  title = "Dra. Karina Gonzaga | Advocacia e Consultoria Jurídica",
+  description = "Advogada especialista em Direito Penal, Consumidor e Inventários. Mais de 5 anos de experiência com atendimento personalizado e ético.",
+  image = "/og-image.jpg",
+  canonicalURL = Astro.url.href
+} = Astro.props;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Attorney",
+  "name": "Dra. Karina Gonzaga",
+  "description": "Advocacia e Consultoria Jurídica",
+  "url": canonicalURL,
+  "telephone": "+55 14 92004-4847",
+  "email": "karinagonzaga@adv.oabsp.org.br",
+  "areaServed": {
+    "@type": "Country",
+    "name": "Brasil"
+  },
+  "knowsAbout": [
+    "Direito Civil",
+    "Contratos",
+    "Direito do Consumidor",
+    "Família e Sucessões",
+    "Direito Criminal",
+    "Consultoria Jurídica"
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/in/karina-gonzaga-42b438162/",
+    "https://www.instagram.com/karinagonzaga.adv/"
+  ]
+};
+---
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta name="keywords" content="advogada, consultoria jurídica, direito civil, contratos, direito do consumidor, inventários, direito penal, advocacia" />
+<meta name="author" content="Dra. Karina Gonzaga" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={image} />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:site_name" content="Dra. Karina Gonzaga Advocacia" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={image} />
+
+<!-- Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />

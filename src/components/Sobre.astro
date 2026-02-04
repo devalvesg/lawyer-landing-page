@@ -1,0 +1,215 @@
+---
+import { Image } from 'astro:assets';
+import karinaPerfil from '../assets/karina-perfil.jpg';
+---
+
+<section class="sobre-section" id="sobre">
+  <div class="container">
+    <div class="sobre-grid">
+      <div class="sobre-image-wrapper">
+        <div class="image-border"></div>
+        <div class="image-container">
+          <Image
+            src={karinaPerfil}
+            alt="Dra. Karina Gonzaga - Advogada"
+            width={600}
+            height={750}
+            class="sobre-image"
+            loading="lazy"
+            quality={85}
+          />
+        </div>
+      </div>
+
+      <div class="sobre-content">
+        <span class="sobre-tag">Trajetória e Compromisso</span>
+        <h2 class="sobre-title">Dra. Karina Gonzaga</h2>
+        <div class="sobre-text">
+          <p>
+            Com mais de 5 anos de atuação sólida no mercado jurídico, a Dra. Karina Gonzaga construiu uma carreira pautada na ética, transparência e busca incansável pela justiça.
+          </p>
+          <p>
+            Especialista em Direito Penal, Consumidor e Inventários, sua abordagem combina o rigor técnico acadêmico com uma visão humana e estratégica de cada caso.
+          </p>
+        </div>
+
+        <div class="sobre-highlights">
+          <div class="highlight-item">
+            <span class="highlight-number">5+</span>
+            <span class="highlight-label">Anos de Experiência</span>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-number">100%</span>
+            <span class="highlight-label">Comprometimento</span>
+          </div>
+        </div>
+
+        <a
+          href="https://wa.me/5514920044847?text=Olá! Gostaria de saber mais sobre os serviços."
+          class="btn btn-primary sobre-btn"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Falar com a Dra. Karina
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sobre-section {
+    padding: var(--space-24) 0;
+    background: var(--beige);
+  }
+
+  .sobre-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+    align-items: center;
+  }
+
+  .sobre-image-wrapper {
+    position: relative;
+    max-width: 500px;
+  }
+
+  .image-border {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: calc(97% + 15px);
+    height: calc(97% + 15px);
+    border: none;
+    border: 2px solid var(--gold);
+    border-top: 2px solid var(--gold);
+    z-index: 0;
+  }
+
+  .image-container {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    box-shadow: var(--shadow-photo);
+  }
+
+  .sobre-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform var(--transition-slow);
+  }
+
+  .sobre-image-wrapper:hover .sobre-image {
+    transform: scale(1.03);
+  }
+
+  .sobre-content {
+    padding-left: var(--space-8);
+  }
+
+  .sobre-tag {
+    display: inline-block;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--space-4);
+  }
+
+  .sobre-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--brown-dark);
+    margin-bottom: var(--space-6);
+  }
+
+  .sobre-text {
+    margin-bottom: var(--space-4);
+  }
+
+  .sobre-text p {
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+    color: var(--gray-700);
+    margin-bottom: var(--space-4);
+  }
+
+  .sobre-text p:last-child {
+    margin-bottom: 0;
+  }
+
+  .sobre-highlights {
+    display: flex;
+    gap: var(--space-10);
+    margin-bottom: var(--space-4);
+    padding: var(--space-2) 0;
+    border-top: 1px solid var(--gold-10);
+    border-bottom: 1px solid var(--gold-10);
+  }
+
+  .highlight-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .highlight-number {
+    font-family: var(--font-display);
+    font-size: var(--text-4xl);
+    font-weight: 500;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .highlight-label {
+    font-size: var(--text-sm);
+    color: var(--gray-600);
+    margin-top: var(--space-2);
+  }
+
+  @media (max-width: 1024px) {
+    .sobre-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-12);
+    }
+
+    .sobre-image-wrapper {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .sobre-content {
+      padding-left: 0;
+      text-align: center;
+    }
+
+    .sobre-highlights {
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .sobre-section {
+      padding: var(--space-16) 0;
+    }
+
+    .image-border {
+      top: -10px;
+      left: -10px;
+      width: calc(100% + 10px);
+      height: calc(100% + 10px);
+    }
+
+    .sobre-highlights {
+      flex-direction: column;
+      gap: var(--space-6);
+      align-items: center;
+    }
+
+    .highlight-item {
+      align-items: center;
+    }
+  }
+</style>

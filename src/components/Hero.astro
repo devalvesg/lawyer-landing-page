@@ -1,0 +1,138 @@
+---
+import { Image } from 'astro:assets';
+import mockupHero from '../assets/mockup-hero.png';
+---
+
+<section class="hero" id="hero">
+  <div class="hero-background">
+    <Image
+      src={mockupHero}
+      alt="Escritório de advocacia"
+      class="hero-bg-image"
+      loading="eager"
+      quality={90}
+    />
+    <div class="hero-overlay"></div>
+  </div>
+
+  <div class="hero-content">
+    <h1 class="hero-title animate-fade-in-up" style="animation-delay: 0.1s;">
+      Karina Gonzaga
+    </h1>
+
+    <p class="hero-subtitle animate-fade-in-up" style="animation-delay: 0.2s;">
+      Advocacia e Consultoria Jurídica
+    </p>
+
+    <div class="hero-cta animate-fade-in-up" style="animation-delay: 0.3s;">
+      <a
+        href="https://wa.me/5514920044847?text=Olá! Gostaria de agendar uma consultoria."
+        class="btn btn-primary hero-btn"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Agendar Consultoria
+      </a>
+    </div>
+  </div>
+
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+    padding-bottom: 10vh;
+  }
+
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+
+  .hero-bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      rgba(76, 47, 41, 0.5) 0%,
+      rgba(76, 47, 41, 0.6) 50%,
+      rgba(76, 47, 41, 0.7) 100%
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: var(--space-24) var(--container-padding);
+    max-width: 800px;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 400;
+    color: var(--white);
+    letter-spacing: 0.02em;
+    margin-bottom: var(--space-4);
+    opacity: 0;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  }
+
+  .hero-subtitle {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 3vw, 1.875rem);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--gold);
+    margin-bottom: var(--space-10);
+    opacity: 0;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  }
+
+  .hero-cta {
+    opacity: 0;
+  }
+
+  .hero-btn {
+    padding: var(--space-3) var(--space-10);
+    font-size: var(--text-base);
+    min-width: 280px;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero {
+      min-height: 100svh;
+      padding-bottom: 8vh;
+    }
+
+    .hero-content {
+      padding-top: calc(var(--space-24) + 60px);
+    }
+  }
+
+  /* Animation delays */
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease forwards;
+  }
+</style>

@@ -1,0 +1,121 @@
+---
+import TestimonialCard from './TestimonialCard.astro';
+
+const testimonials = [
+  {
+    text: "Excelente profissional! Atendimento rápido e muito atencioso. Conseguiu resolver meu processo de inventário com uma agilidade que eu não esperava.",
+    name: "Roberto Silveira",
+    role: "Empresário"
+  },
+  {
+    text: "A Dra. Karina foi fundamental na minha causa de consumidor contra uma grande empresa aérea. Muito técnica e segura nas orientações.",
+    name: "Juliana Martins",
+    role: "Arquiteta"
+  },
+  {
+    text: "Recomendo fortemente pela seriedade e compromisso. Uma consultoria jurídica de alto nível, com foco total no cliente.",
+    name: "Carlos Alberto",
+    role: "Investidor"
+  }
+];
+---
+
+<section class="depoimentos-section" id="depoimentos">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Confiança de Nossos Clientes</h2>
+      <p class="section-subtitle">
+        A maior prova da nossa excelência é a satisfação de quem confia em nosso trabalho.
+      </p>
+    </div>
+
+    <div class="testimonials-grid">
+      {testimonials.map((testimonial, index) => (
+        <TestimonialCard
+          text={testimonial.text}
+          name={testimonial.name}
+          role={testimonial.role}
+          delay={index * 150}
+        />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .depoimentos-section {
+    padding: var(--space-24) 0;
+    background: var(--brown-dark);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .depoimentos-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+      radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-16);
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--gold);
+    margin-bottom: var(--space-4);
+  }
+
+  .section-subtitle {
+    font-size: var(--text-base);
+    color: var(--gray-400);
+    max-width: 42rem;
+    margin: 0 auto;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+  }
+
+  @media (max-width: 1024px) {
+    .testimonials-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .testimonials-grid > :last-child {
+      grid-column: span 2;
+      max-width: 50%;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .depoimentos-section {
+      padding: var(--space-16) 0;
+    }
+
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .testimonials-grid > :last-child {
+      grid-column: span 1;
+      max-width: 100%;
+    }
+  }
+</style>
