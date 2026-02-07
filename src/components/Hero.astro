@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import mockupHero from '../assets/mockup-hero.png';
+import mockupHero from '../assets/mockup-hero-hd.png';
 ---
 
 <section class="hero" id="hero">
@@ -9,8 +9,9 @@ import mockupHero from '../assets/mockup-hero.png';
       src={mockupHero}
       alt="Escritório de advocacia"
       class="hero-bg-image"
+      width={1920}
       loading="eager"
-      quality={90}
+      quality={100}
     />
     <div class="hero-overlay"></div>
   </div>
